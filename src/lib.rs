@@ -19,6 +19,9 @@ const CAP_LINUX_IMMUTABLE: c_long = 9;
 const CAP_MKNOD: c_long = 27;
 const CAP_MAC_OVERRIDE: c_long = 32;
 
+#[used]
+static SENTINEL: u32 = 42u32;
+
 /// The initialization function that will run before the "main" function (or any test function)
 #[ctor]
 unsafe fn initialize() {
