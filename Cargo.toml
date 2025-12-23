@@ -1,0 +1,12 @@
+[package]
+name = "drop-root-caps"
+description = "A simple crate to drop 'root' user capabilities on Linux"
+authors = ["LoRd_MuldeR <mulder2@gmx.de>"]
+license = "0BSD"
+repository = "https://github.com/lordmulder/drop-root-caps/"
+version = "1.0.0"
+edition = "2021"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+ctor = { version = "0.6.3", default-features = false, features = ["proc_macro"] }
+libc = { version =  "0.2.178", default-features = false }
