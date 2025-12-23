@@ -13,14 +13,19 @@ This crate uses the syscall [`prctl()`](https://man7.org/linux/man-pages/man2/pr
 
 ## Usage
 
-Simply add the following to your **`Cargo.toml`** file:
+Add the following to your **`Cargo.toml`** file:
 
 ```
 [dev-dependencies]
-drop-root-caps = "1.0.0"
+drop-root-caps = "1.0.2"
 ```
 
-That's all!
+Also, you must add following "boilerplate" code to your test module, because otherwise the Rust compiler will simply optimizes away the `drop-root-caps` dependency &#128556;
+
+```
+#[allow(unused_imports)]
+use drop_root_caps;
+```
 
 *Note:* You probably do **not** want to add this crate to your `[dependencies]`, *only* to the `[dev-dependencies]` &#x1F4A1;
 
