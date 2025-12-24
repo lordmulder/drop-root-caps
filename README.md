@@ -17,7 +17,7 @@ Add the following to your **`Cargo.toml`** file:
 
 ```
 [dev-dependencies]
-drop-root-caps = "1.1.0"
+drop-root-caps = "1.1.1"
 ```
 
 Also, you **must** add following code to your test module(s), because otherwise the Rust compiler will optimize away the `drop-root-caps` dependency &#128556;

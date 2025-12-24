@@ -24,7 +24,6 @@ mod linux {
     /// The initialization function that will run before the "main" function (or any test function)
     #[ctor]
     unsafe fn initialize() {
-        libc::abort();
         for capability in [CAP_CHOWN, CAP_DAC_OVERRIDE, CAP_DAC_READ_SEARCH, CAP_FOWNER, CAP_FSETID, CAP_LINUX_IMMUTABLE, CAP_MAC_OVERRIDE, CAP_MKNOD] {
             black_box(prctl(PR_CAPBSET_DROP, capability, 0 as c_long, 0 as c_long, 0 as c_long));
         }
