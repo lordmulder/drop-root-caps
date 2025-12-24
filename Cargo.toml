@@ -4,8 +4,13 @@ description = "A simple crate to drop 'root' user capabilities on Linux"
 authors = ["LoRd_MuldeR <mulder2@gmx.de>"]
 license = "0BSD"
 repository = "https://github.com/lordmulder/drop-root-caps/"
-version = "1.1.1"
+version = "1.1.2"
 edition = "2021"
+categories = ["development-tools::testing", "os", "no-std", "security"]
+keywords = ["testing", "capabilities", "linux", "docker"]
+
+[package.metadata]
+no_std = true
 
 [target.'cfg(target_os = "linux")'.dependencies]
 ctor = { version = "0.6.3", default-features = false, features = ["proc_macro"] }

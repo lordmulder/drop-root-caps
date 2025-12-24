@@ -7,7 +7,7 @@
 
 A simple crate to drop "root" user capabilities on Linux.
 
-On Linux, the "root" user (UID 0) has some special capabilities that "regular" users do **not** normally have. This can result in weird behavior, e.g., if unit tests (or integration tests) are executed in the context of the "root" user, as GitHub actions do by default! For example, a file that **should not** be accessible (according to its access permissions) may suddenly become accessible – because the "root" user has the `CAP_DAC_OVERRIDE` capability, which allows the "root" user to access the file *regardless of the access permissions*. As a result, a test case that expects the `File::open()` to return a "permission denied" error (and rightfully so!) will suddenly start to fail &#x1F628;
+On Linux, the "root" user (UID 0) has some special capabilities that "regular" users do **not** normally have. This can result in weird behavior, e.g., if unit tests (or integration tests) are executed in the context of the "root" user, as Docker&REG; containers do by default! For example, a file that **should not** be accessible (according to its access permissions) may suddenly become accessible – because the "root" user has the `CAP_DAC_OVERRIDE` capability, which allows the "root" user to access the file *regardless of the access permissions*. As a result, a test case that expects `File::open()` to return a "permission denied" error (and rightfully so!) will suddenly start to fail &#x1F628;
 
 This crate uses the Linux syscall [`prctl()`](https://man7.org/linux/man-pages/man2/prctl.2.html) with argument [`PR_CAPBSET_DROP`](https://man7.org/linux/man-pages/man2/PR_CAPBSET_DROP.2const.html) to drop the "root"-specific capabilities at application startup and thus restores the expected behavior. It does *nothing* on other platforms.
 
@@ -17,17 +17,17 @@ Add the following to your **`Cargo.toml`** file:
 
 ```
 [dev-dependencies]
-drop-root-caps = "1.1.1"
+drop-root-caps = "1.1.2"
 ```
 
-Also, you **must** add following code to your test module(s), because otherwise the Rust compiler will optimize away the `drop-root-caps` dependency &#128556;
+You probably do **not** want to add this crate to your `[dependencies]`, *only* to the `[dev-dependencies]` &#x1F4A1;
+
+Also, you **must** add the following code to your test module(s), because otherwise the Rust compiler optimizes away the `drop-root-caps` dependency &#128556;
 
 ```
 #[used]
 static DROP_ROOT_CAPS: () = drop_root_caps::set_up();
 ```
-
-*Note:* You probably do **not** want to add this crate to your `[dependencies]`, *only* to the `[dev-dependencies]` &#x1F4A1;
 
 ## License
 
