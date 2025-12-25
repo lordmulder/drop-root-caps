@@ -25,7 +25,7 @@
 //!
 //! <div class="warning">
 //!
-//! Note: For the `ctor` feature to work as expected, you absolutely **must** call the *static* [`set_up()`] function, as describe [above](#usage) &#128680;
+//! Note: For the `ctor` feature to work as expected, you **must** call the *static* [`set_up()`] function, as describe [above](#usage) &#128680;
 //!
 //! </div>
 //!

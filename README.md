@@ -17,7 +17,7 @@ Add the following to your **`Cargo.toml`** file:
 
 ```
 [dev-dependencies]
-drop-root-caps = "1.2.0"
+drop-root-caps = "1.2.1"
 ```
 
 You probably do **not** want to add this crate to your `[dependencies]`, *only* to the `[dev-dependencies]` &#x1F4A1;
