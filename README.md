@@ -17,12 +17,12 @@ Add the following to your **`Cargo.toml`** file:
 
 ```
 [dev-dependencies]
-drop-root-caps = "1.1.2"
+drop-root-caps = "1.2.0"
 ```
 
 You probably do **not** want to add this crate to your `[dependencies]`, *only* to the `[dev-dependencies]` &#x1F4A1;
 
-Also, you **must** add the following code to your test module(s), because otherwise the Rust compiler optimizes away the `drop-root-caps` dependency &#128556;
+Also, you **must** add the following code to your test module(s), as otherwise the Rust compiler optimizes away the `drop-root-caps` dependency &#128556;
 
 ```
 #[used]
